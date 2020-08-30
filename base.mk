@@ -68,3 +68,5 @@ PRODUCT_PACKAGES += \
 	vr_hwc \
 	curl \
 
+# Get non-open-source specific aspects
+$(call inherit-product-if-exists, vendor/GM/GM8_sprout/GM8_sprout-vendor.mk)
