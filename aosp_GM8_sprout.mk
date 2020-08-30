@@ -24,6 +24,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 # Inherit from daisy device
 $(call inherit-product, device/GM/GM8_sprout/base.mk)
 
+$(call inherit-product, device/phh/treble/base-pre.mk)
+$(call inherit-product, vendor/vndk/vndk.mk)
+
 # Enable updating of APEXes
 #$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
