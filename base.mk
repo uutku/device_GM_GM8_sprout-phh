@@ -4,22 +4,6 @@ PRODUCT_COPY_FILES += \
 
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += device/GM/GM8_sprout/sepolicy
 DEVICE_PACKAGE_OVERLAYS += device/GM/GM8_sprout/overlay
-
-$(call inherit-product, vendor/hardware_overlay/overlay.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
-
-#Those overrides are here because Huawei's init read properties
-#from /system/etc/prop.default, then /vendor/build.prop, then /system/build.prop
-#So we need to set our props in prop.default
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-	ro.build.version.sdk=$(PLATFORM_SDK_VERSION) \
-	ro.build.version.codename=$(PLATFORM_VERSION_CODENAME) \
-	ro.build.version.all_codenames=$(PLATFORM_VERSION_ALL_CODENAMES) \
-	ro.build.version.release=$(PLATFORM_VERSION) \
-	ro.build.version.security_patch=$(PLATFORM_SECURITY_PATCH) \
-	ro.adb.secure=0 \
-	ro.logd.auditd=true
 	
 #USB Audio
 PRODUCT_COPY_FILES += \
