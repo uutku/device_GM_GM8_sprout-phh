@@ -1,10 +1,7 @@
 include build/make/target/board/generic_arm64_ab/BoardConfig.mk
-include device/phh/treble/board-base.mk
+include device/GM/GM8_sprout/board-base.mk
 
-ifeq ($(BOARD_SYSTEMIMAGE_PARTITION_RESERVED_SIZE),)
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2147483648
-else
-BOARD_SYSTEMIMAGE_PARTITION_RESERVED_SIZE := 33554432
-endif
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472
+BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 
 BUILD_BROKEN_PHONY_TARGETS := true

@@ -8,7 +8,7 @@ if [ -n "$1" ];then
             rom_script="$rom_script"$'\n''$(call inherit-product, '$i')'
         done
     else
-		rom_script='$(call inherit-product, device/phh/treble/'$1'.mk)'
+		rom_script='$(call inherit-product, device/GM/GM8_sprout/'$1'.mk)'
 	fi
 fi
 
@@ -26,12 +26,12 @@ for part in a ab;do
 		optional_base=""
 				if [ "$apps" == "gapps" ];then
 					apps_suffix="g"
-					apps_script='$(call inherit-product, device/phh/treble/gapps.mk)'
+					apps_script='$(call inherit-product, device/GM/GM8_sprout/gapps.mk)'
 					apps_name="with GApps"
 				fi
 				if [ "$apps" == "gapps-go" ];then
 					apps_suffix="o"
-					apps_script='$(call inherit-product, device/phh/treble/gapps-go.mk)'
+					apps_script='$(call inherit-product, device/GM/GM8_sprout/gapps-go.mk)'
 					apps_name="Go"
 				fi
 				if [ "$apps" == "foss" ];then
@@ -61,7 +61,7 @@ for part in a ab;do
 				if [ "$part" == 'ab' ];then
 					part_suffix='b'
 				else
-					optional_base='$(call inherit-product, device/phh/treble/base-sas.mk)'
+					optional_base='$(call inherit-product, device/GM/GM8_sprout/base-sas.mk)'
 				fi
 
 				target="treble_${arch}_${part_suffix}${apps_suffix}${su_suffix}"
@@ -78,18 +78,18 @@ for part in a ab;do
 
 				cat > ${target}.mk << EOF
 TARGET_GAPPS_ARCH := ${baseArch}
-\$(call inherit-product, device/phh/treble/base-pre.mk)
+\$(call inherit-product, device/GM/GM8_sprout/base-pre.mk)
 include build/make/target/product/aosp_${baseArch}_ab.mk
 \$(call inherit-product, vendor/vndk/${vndk})
-\$(call inherit-product, device/phh/treble/base.mk)
+\$(call inherit-product, device/GM/GM8_sprout/base.mk)
 $optional_base
 $apps_script
 $rom_script
 
-PRODUCT_NAME := $target
-PRODUCT_DEVICE := phhgsi_${arch}_$part
-PRODUCT_BRAND := Android
-PRODUCT_MODEL := Phh-Treble $apps_name
+PRODUCT_NAME := GM 8
+PRODUCT_DEVICE := GM8_sprout
+PRODUCT_BRAND := General Mobile
+PRODUCT_MODEL := GM 8
 
 PRODUCT_PACKAGES += $extra_packages
 
